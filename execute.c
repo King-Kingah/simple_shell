@@ -1,48 +1,48 @@
 #include "holberton.h"
-
 /**
- * execute_proc - works like puts
- * @cmd: pointer to int that is set to 402
+ * execute_proc - similar to puts in C
+ * @cmd: a pointer the integer we want to set to 402
  *
  * Return: int
  */
 void execute_proc(char **cmd)
 {
-  char *parametro = (*(cmd + 1));
-  char *s, *slash = "/";
-  char *o;
 
-  char *vartoprint = *cmd;
-  char *argv[4];
+char *parametro = (*(cmd + 1));
+char *s, *slash = "/";
+char *o;
 
-  if ((access(cmd[0], F_OK) == 0))
-    {
-      argv[0] = cmd[0];
-      argv[1] = parametro;
-      argv[2] = ".";
-      argv[3] = NULL;
+char *vartoprint = *cmd;
+char *argv[4];
 
-      if (execve(argv[0], argv, NULL) == -1)
-	{
-	  perror("Error");
-	}
-    }
-  else
-    {
-      o = find_command(vartoprint);
+if ((access(cmd[0], F_OK) == 0))
+{
+argv[0] = cmd[0];
+argv[1] = parametro;
+argv[2] = ".";
+argv[3] = NULL;
 
-      slash = str_concat(o, slash);
+if (execve(argv[0], argv, NULL) == -1)
+{
+perror("Error");
+}
+}
+else
+{
+o = find_command(vartoprint);
 
-      s = str_concat(slash, *cmd);
+slash = str_concat(o, slash);
 
-      argv[0] = s;
-      argv[1] = parametro;
-      argv[2] = ".";
-      argv[3] = NULL;
+s = str_concat(slash, *cmd);
 
-      if (execve(argv[0], argv, NULL) == -1)
-	{
-	  perror("Error");
-	}
-    }
+argv[0] = s;
+argv[1] = parametro;
+argv[2] = ".";
+argv[3] = NULL;
+
+if (execve(argv[0], argv, NULL) == -1)
+{
+perror("Error");
+}
+}
 }
