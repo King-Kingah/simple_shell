@@ -82,7 +82,7 @@ s2 = "";
 
 lens1 = _strlen(s1);
 
-len2 = _strlen(s2);
+lens2 = _strlen(s2);
 
 a = malloc(((lens1) +(lens2) + 1) * sizeof(char));
 
